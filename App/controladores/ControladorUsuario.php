@@ -8,6 +8,11 @@ include_once "includes/autoload.php";
 
 class ControladorUsuario
 {
+    public function validar(int $codigo){
+        $usuario = new Usuario();
+        $usuario->setCodigo($codigo);
+        var_dump($usuario->getCodigo);
+    }
     public function login(int $codigo, string $password): void
     {
         $usuario = new Usuario();
@@ -72,5 +77,13 @@ class ControladorUsuario
         preg_match("/[a-zA-Z ]+/", $cadena, $valores);
         $validacion = (strlen($cadena) == strlen($valores[0])) ? true : false;
         return $validacion;
+    }
+     public function mostrarEstudiantes(){
+        $usuario = new Usuario();
+        return $usuario->mostrarEstudiante();
+     }
+    public function eliminarEstudiantes($id){
+        $usuario = new Usuario();
+        return $usuario->eliminarEstudiante($id);
     }
 }
